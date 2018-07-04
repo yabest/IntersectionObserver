@@ -1,0 +1,53 @@
+
+<!DOCTYPE html><html>
+    <header>
+        <style>
+            .list-item{
+                height: 400px; 
+                margin: 5px; 
+                /*background-color: lightblue; */
+                list-style: none;
+            }
+        </style>
+    </header>
+    <body>
+        <li class="list-item">
+        	<img class="list-item-img" alt="loading" data-src='./jsloading-141022114841/images/big-1.jpg'>
+        </li>
+        <li class="list-item">
+        	<img class="list-item-img" alt="loading" data-src='./jsloading-141022114841/images/big-2.jpg'>
+        </li>
+        <li class="list-item">
+        	<img class="list-item-img" alt="loading" data-src='./jsloading-141022114841/images/big-3.jpg'>
+        </li>
+        <li class="list-item">
+        	<img class="list-item-img" alt="loading" data-src='./jsloading-141022114841/images/big-4.jpg'>
+        </li>
+        <li class="list-item">
+        	<img class="list-item-img" alt="loading" data-src='./jsloading-141022114841/images/big-5.jpg'>
+        </li>
+        <li class="list-item">
+        	<img class="list-item-img" alt="loading" data-src='./jsloading-141022114841/images/big-6.jpg'>
+        </li>
+ 
+        <script>
+            var observer = new IntersectionObserver(function(changes) {
+                changes.forEach(function(element, index) {           
+
+                    if (element.intersectionRatio > 0 && element.intersectionRatio <= 1) {
+                        console.log(element.target.getAttribute('data-src'))     
+                        element.target.src = element.target.getAttribute('data-src')
+                    }
+                })
+            })            
+            function addObserver() {                
+                  var listItems = document.querySelectorAll('.list-item-img')
+                listItems.forEach(function(item) {
+                    observer.observe(item)
+                })
+            }
+ 
+            addObserver()        
+       </script>
+    </body>
+  </html>
